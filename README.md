@@ -1,3 +1,25 @@
+## Fork notes:
+
+This is a fork of the original TextBelt project by Ian Webster. I made two changes: 
+
+1. Add basic auth to the server
+2. Add support for environment variables for easier deployment
+   
+You shouldn't have to change anything in the code to get it to work. Just set the environment variables and run the server.
+
+NOTE: You will need an SMTP server to send text messages. This project uses an email-to-text gateway to send text messages. 
+I suggest using SMTP2GO: https://www.smtp2go.com/ 
+
+The environment variables are:
+- `SMTP_HOST` ex: smtp.gmail.com
+- `SMTP_PASSWORD` ex: password123
+- `SMTP_USERNAME` ex: admin
+- `SMTP_PORT` ex: 587
+- `BASIC_AUTH_USERNAME` ex: admin
+- `BASIC_AUTH_PASSWORD` ex: password123
+- `FROM_NAME` ex: TextBelt
+- `FROM_EMAIL` ex: example@example.com
+
 ### TextBelt Open Source
 
 TextBelt Open Source is a REST API that sends outgoing SMS.  It uses a free mechanism for sending texts, different from the more reliable paid version available at https://textbelt.com.
