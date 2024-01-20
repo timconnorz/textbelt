@@ -1,4 +1,6 @@
 const express = require('express');
+const basicAuth = require('express-basic-auth');
+require('dotenv').config({ path: './.env' });
 
 const carriers = require('../lib/carriers.js');
 const providers = require('../lib/providers.js');
@@ -15,6 +17,22 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
+
+function getUnauthorizedResponse(req) {
+  return req.auth
+    ? (`Credentials ${req.auth.user}:${req.auth.password} rejected`)
+    : 'No credentials provided';
+}
+
+// Basic Auth Configuration
+app.use(basicAuth({
+  users: {
+    [process.env.BASIC_AUTH_USERNAME]: process.env.BASIC_AUTH_PASSWORD,
+  },
+  challenge: true,
+  unauthorizedResponse: getUnauthorizedResponse,
+}));
+
 
 // Enable log messages when sending texts.
 text.config({
