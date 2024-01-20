@@ -1,3 +1,6 @@
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/ntXGdO?referralCode=ToDObE)
+
+
 ## Fork notes:
 
 This is a fork of the original TextBelt project by Ian Webster. I made two changes: 
